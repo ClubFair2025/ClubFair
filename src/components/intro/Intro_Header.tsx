@@ -53,6 +53,7 @@ function Intro_Header() {
             style={{ x: sunX, y: sunY }}
           />
           <motion.img
+            className="w-screen h-50"
             src={savanaBlack}
             alt="intro_background"
             style={{ opacity: blackOpacity }}

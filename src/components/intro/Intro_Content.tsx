@@ -8,15 +8,15 @@ function Intro_Content() {
 
   const firstSectionOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.7],
+    [0.2, 0.25, 0.7],
     [0, 1, 0]
   );
   const secondSectionOpacity = useTransform(
     scrollYProgress,
-    [0.3, 0.65, 1],
-    [0, 1, 0]
+    [0.3, 0.55, 0.9],
+    [0, 1, 0.2]
   );
-  const thirdSectionOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1]);
+  const thirdSectionOpacity = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
 
   return (
     <main className="bg-gradient-to-b from-[#CC6617] from-0% via-[#ffffff] via-30% to-[#D5CAE4] to-100%">
