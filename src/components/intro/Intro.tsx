@@ -4,7 +4,7 @@ import Intro_Content from "./Intro_Content";
 
 function Intro() {
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <Intro_Header />
       <Intro_Content />
     </div>
