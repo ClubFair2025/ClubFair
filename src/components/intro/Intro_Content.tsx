@@ -1,10 +1,10 @@
-import FirstScene from "../../assets/scene 1st.png";
-import SecondScene from "../../assets/scene 2nd.png";
-import ThirdScene from "../../assets/scene 3rd.png";
+import FirstScene from "../../assets/img/scene 1st.png";
+import SecondScene from "../../assets/img/scene 2nd.png";
+import ThirdScene from "../../assets/img/scene 3rd.png";
 import Intro_Footer from "./Intro_Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lottie from "lottie-react";
-import introScroll from "../../assets/introScroll.json";
+import introScroll from "../../assets/animation/introScroll.json";
 
 function Intro_Content() {
   const { scrollYProgress } = useScroll();
@@ -29,7 +29,7 @@ function Intro_Content() {
           "linear-gradient(to bottom, #1e1d3e 0%, #BCFDFB 46%, #fdfcfd 100%)",
       }}
     >
-      <p className="text-white text-base font-semibold pt-50">
+      <p className="text-white text-base font-semibold pt-30">
         아래로 스크롤해보세요!
       </p>
       <div className="flex justify-center mt-4 mb-[500px]">

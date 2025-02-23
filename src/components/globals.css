@@ -28,3 +28,8 @@ body {
   position: relative;
   border: 1px solid #ccc; /* 경계선 추가 (선택 사항) */
 }
+
+@font-face {
+  font-family: "pixelroborobo.otf";
+  src: url("../assets/fonts/pixelroborobo.otf");
+}

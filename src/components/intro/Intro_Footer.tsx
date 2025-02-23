@@ -1,4 +1,4 @@
-import startGame from "../../assets/startGame.png";
+import startGame from "../../assets/img/startGame.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function Intro_Footer() {
