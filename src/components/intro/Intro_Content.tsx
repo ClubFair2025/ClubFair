@@ -29,10 +29,10 @@ function Intro_Content() {
           "linear-gradient(to bottom, #1e1d3e 0%, #BCFDFB 46%, #fdfcfd 100%)",
       }}
     >
-      <p className="text-white text-base font-semibold pt-30">
+      <p className="text-white text-base font-semibold pt-8">
         아래로 스크롤해보세요!
       </p>
-      <div className="flex justify-center mt-4 mb-[500px]">
+      <div className="flex justify-center mt-8 mb-[500px]">
         <Lottie
           animationData={introScroll}
           loop
