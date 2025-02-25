@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import startGame from "../../assets/img/startGame.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -26,12 +27,12 @@ function Intro_Footer() {
         src={startGame}
         alt="게임 시작 이미지"
       />
-      <button
+      <Link
         className="bg-[#FF9B62] text-black font-bold flex justify-center items-center rounded-4xl w-[90%] h-13 shadow-[0px_2px_10px_0px_rgba(0,0,0,0.25)]"
-        type="button"
+        to="/typing-fast"
       >
         팀원 구하러 가기
-      </button>
+      </Link>
     </motion.div>
   );
 }
