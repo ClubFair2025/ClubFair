@@ -25,6 +25,25 @@ function DistinguishingGrowl() {
     null,
   ); // 현재 재생 중인 오디오 추적
 
+  const modalState = () => {
+    switch (isModalOpen) {
+      case "Start":
+        return (
+          <StartModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={0}
+          />
+        );
+      // case "Complete":
+      //   return <CompleteModal />;
+      // case "Fail":
+      //   return <FailModal />;
+      default:
+        return;
+    }
+  };
+
   useEffect(() => {
     setShuffledOptions(shuffleArray(animalSounds)); // 초기 옵션 셔플
   }, []);
@@ -64,13 +83,8 @@ function DistinguishingGrowl() {
           <div className="w-[90%] flex justify-start mb-5">
             <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
           </div>
-          {isModalOpen === "Start" && (
-            <StartModal
-              open={isModalOpen}
-              onClose={() => setIsModalOpen("")}
-              stage={0}
-            />
-          )}
+          {modalState()}
+
           <p className="text-slate-900 font-bold text-base mt-16">STEP 04</p>
           <p className="text-[#44652B] font-bold text-base mt-2">
             사용자의 눈을 사로잡을 프론트엔드,
