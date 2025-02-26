@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Step3_Button from "../UI/Step3_Button";
+import owlImg from "../../assets/img/other_animals/suricate.png";
 import { selectionData } from "../../constants/selectionData";
-import BG from "../../assets/img/step3_BG.png";
+import StartModal from "../UI/StartModal";
+import CompleteModal from "../UI/CompleteModal";
+import Progressbar from "../UI/Progressbar";
 
 function FindingRabbit() {
   const [selected, setSelected] = useState(0);
@@ -12,47 +15,61 @@ function FindingRabbit() {
   // 실패 모달 -> "Fail"
   const [isModalOpen, setIsModalOpen] = useState("Start");
 
-  const onSelection = (index: number) => {
-    setSelected(index);
-    console.log(selected);
-
-    if (index === 3) alert("정답입니다!");
-    else alert("오답입니다!");
+  const modalState = () => {
+    switch (isModalOpen) {
+      case "Start":
+        return (
+          <StartModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={2}
+          />
+        );
+      case "Complete":
+        return (
+          <CompleteModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={2}
+          />
+        );
+      // case "Fail":
+      //   return <FailModal />;
+      default:
+        return;
+    }
   };
+
+  useEffect(() => {
+    if (selected === 3) {
+      setIsModalOpen("Complete");
+    } else alert("오답입니다!");
+  }, [selected]);
 
   return (
     <>
-      {/* {modalState} */}
-      <div className="bg-cover bg-no-repeat bg-top bg-[url('/src/assets/img/step3_BG.webp')] w-full h-full flex flex-col justify-between items-center">
-        {/* 여기는 스타일링을 통일하는 게 매끄러울 듯 함. */}
-        <div className="w-full flex flex-col justify-start items-center relative">
-          <div className="h-20">미어캣이랑 프로그레스바 자리</div>
-        </div>
-        <div className="w-full flex flex-col justify-center items-center relative">
-          <div className="text-center text-[#383838] text-base font-bold font-['Inter']">
-            STEP 03
-          </div>
-          <div className=" text-center">
-            <span className="text-[#852e2f] text-base font-bold font-['Inter']">
-              트렌디하고 섬세한 디자이너,
-              <br />
-            </span>
-            <span className="text-[#852e2f] text-xl font-bold font-['Inter']">
-              미어캣 구하기
-            </span>
-          </div>
-          <div className="text-center text-[#3e3e3e] text-sm font-semibold font-['Inter'] mt-10">
-            10초 안에 ‘멋쟁이사자처럼'을 찾아주세요!
-          </div>
-        </div>
-        <div className="w-full h-120 overflow-y-hidden flex-col justify-center items-center gap-[17px] inline-flex mt-15">
+      {modalState()}
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step3_BG.webp')] bg-contain items-center">
+        <p className="w-[90%] flex justify-start mb-5 mt-4">
+          <img className="w-8 h-8" src={owlImg} alt="부엉이" />
+        </p>
+        {isModalOpen === "" && <Progressbar time={10} />}
+        <p className="text-slate-900 font-bold text-base mt-16">STEP 03</p>
+        <p className="text-green-800 font-bold text-base mt-2">
+          트렌디하고 섬세한 디자이너,
+        </p>
+        <p className="text-green-800 font-bold text-xl">미어캣 구하기</p>
+        <p className="text-neutral-800 text-sm font-semibold mt-14">
+          10초 안에 '멋쟁이사자처럼'을 찾아주세요!
+        </p>
+        <div className="w-full h-120 overflow-y-hidden flex-col justify-center items-center gap-[17px] inline-flex">
           {selectionData.map(({ id, text }) => (
             <Step3_Button
               key={id}
               id={id}
               text={text}
               isSelected={id === selected}
-              onSelection={onSelection}
+              onSelection={setSelected}
             />
           ))}
         </div>
