@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Step3_Button from "../UI/Step3_Button";
 import { selectionData } from "../../constants/selectionData";
+import BG from "../../assets/img/step3_BG.png";
 
 function FindingRabbit() {
   const [selected, setSelected] = useState(0);
@@ -22,7 +23,11 @@ function FindingRabbit() {
   return (
     <>
       {/* {modalState} */}
-      <div className="w-full flex flex-col justify-center items-center">
+      <div className="bg-cover bg-no-repeat bg-top bg-[url('/src/assets/img/step3_BG.webp')] w-full h-full flex flex-col justify-between items-center">
+        {/* 여기는 스타일링을 통일하는 게 매끄러울 듯 함. */}
+        <div className="w-full flex flex-col justify-start items-center relative">
+          <div className="h-20">미어캣이랑 프로그레스바 자리</div>
+        </div>
         <div className="w-full flex flex-col justify-center items-center relative">
           <div className="text-center text-[#383838] text-base font-bold font-['Inter']">
             STEP 03
@@ -40,9 +45,10 @@ function FindingRabbit() {
             10초 안에 ‘멋쟁이사자처럼'을 찾아주세요!
           </div>
         </div>
-        <div className="w-full flex-col justify-center items-center gap-[17px] inline-flex mt-15">
+        <div className="w-full h-120 overflow-y-hidden flex-col justify-center items-center gap-[17px] inline-flex mt-15">
           {selectionData.map(({ id, text }) => (
             <Step3_Button
+              key={id}
               id={id}
               text={text}
               isSelected={id === selected}
