@@ -27,6 +27,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `15초 안에 "멋쟁이 사자처럼"`,
         `문장을 완성해주세요!`,
       ],
+      bg_class: "bg-[#fbd4c0]",
     },
     {
       upperImg: backendLion,
@@ -39,6 +40,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `사자 사이에 숨어있어요.`,
         `15초 안에 비버를 찾아주세요!`,
       ],
+      bg_class: "bg-[#ead6c9]",
     },
     {
       upperImg: designLion,
@@ -51,6 +53,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `10초 안에 '멋쟁이사자처럼' 을`,
         `찾아주세요!`,
       ],
+      bg_class: "bg-[#ffe6bf]",
     },
     {
       upperImg: frontendLion,
@@ -63,6 +66,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `협업하기 위해`,
         `여러 소리 중 사자 울음소리를 찾아주세요!`,
       ],
+      bg_class: "bg-[#dff5cb]",
     },
   ];
 
@@ -112,7 +116,9 @@ function StartModal({ open, onClose, stage }: modalProps) {
             </p>
           </div>
         </div>
-        <div className="absolute top-36 left-0 w-full bg-[#fbd4c0] h-64 rounded-4xl flex flex-col items-center z-0">
+        <div
+          className={`absolute top-36 left-0 w-full ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col items-center z-0`}
+        >
           <div className="mt-9 flex gap-3 justify-center items-center">
             <p className="text-center text-black text-sm font-semibold leading-relaxed">
               {DUMMY_STAGE[stage].underText.map(
