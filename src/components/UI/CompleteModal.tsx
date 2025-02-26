@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import OwlImg from "../../assets/img/other_animals/Owl.png";
 import BeaverImg from "../../assets/img/other_animals/Beaver.png";
 import SurricateImg from "../../assets/img/other_animals/Suricate.png";
@@ -22,6 +23,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
         "백엔드 개발자를 구하러 가볼까요!",
       ],
       bg_class: "bg-[#fbd4c0]",
+      link: "/saving-cheetah",
     },
 
     {
@@ -33,6 +35,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
         "웹사이트를 빛나게 해줄 디자이너를 구하러 가볼까요!",
       ],
       bg_class: "bg-[#ead6c9]",
+      link: "/finding-rabbit",
     },
     {
       img: SurricateImg,
@@ -44,6 +47,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
         "프론트엔드 개발자를 구하러 가볼까요!",
       ],
       bg_class: "bg-[#ffe6bf]",
+      link: "/distinguishing-growl",
     },
   ];
 
@@ -96,13 +100,12 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
               <p key={index}>{line}</p>
             ))}
           </p>
-          <button
+          <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-            type="button"
-            onClick={onClose}
+            to={DUMMY_STAGE[stage].link}
           >
             다음 단계
-          </button>
+          </Link>
         </div>
       </dialog>
     </div>,
