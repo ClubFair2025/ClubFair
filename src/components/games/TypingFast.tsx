@@ -46,8 +46,8 @@ function TypingFast() {
   return (
     <>
       {modalState()}
-      <div className="w-full flex flex-col items-center">
-        <p className="w-[90%] flex justify-start mb-5">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/gameBackground.webp')] bg-cover items-center">
+        <p className="w-[90%] flex justify-start mb-5 mt-4">
           <img className="w-8 h-8" src={owlImg} alt="부엉이" />
         </p>
         {isModalOpen === "" && <Progressbar time={15} />}
