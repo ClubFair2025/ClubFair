@@ -55,10 +55,10 @@ function FindingRabbit() {
         </p>
         {isModalOpen === "" && <Progressbar time={10} />}
         <p className="text-slate-900 font-bold text-base mt-16">STEP 03</p>
-        <p className="text-green-800 font-bold text-base mt-2">
+        <p className="text-[#852e2f] font-bold text-base mt-2">
           트렌디하고 섬세한 디자이너,
         </p>
-        <p className="text-green-800 font-bold text-xl">미어캣 구하기</p>
+        <p className="text-[#852e2f] font-bold text-xl">미어캣 구하기</p>
         <p className="text-neutral-800 text-sm font-semibold mt-14">
           10초 안에 '멋쟁이사자처럼'을 찾아주세요!
         </p>
