@@ -59,66 +59,67 @@ function DistinguishingGrowl() {
 
   return (
     <>
-      {isModalOpen === "Start" && (
-        <StartModal
-          open={isModalOpen}
-          onClose={() => setIsModalOpen("")}
-          stage={0}
-        />
-      )}
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-contain items-center">
+        <div className="w-full flex flex-col items-center">
+          <div className="w-[90%] flex justify-start mb-5">
+            <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
+          </div>
+          {isModalOpen === "Start" && (
+            <StartModal
+              open={isModalOpen}
+              onClose={() => setIsModalOpen("")}
+              stage={0}
+            />
+          )}
+          <p className="text-slate-900 font-bold text-base mt-16">STEP 04</p>
+          <p className="text-[#44652B] font-bold text-base mt-2">
+            사용자의 눈을 사로잡을 프론트엔드,
+          </p>
+          <p className="text-[#44652B] font-bold text-xl">카멜레온 구하기</p>
+          <p className="text-neutral-800 text-sm font-semibold mt-14">
+            소리를 듣고 사자를 찾아주세요!
+          </p>
 
-      <div className="w-full flex flex-col items-center">
-        <div className="w-[90%] flex justify-start mb-5">
-          <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
-        </div>
-        <p className="text-slate-900 font-bold text-base mt-16">STEP 04</p>
-        <p className="text-green-800 font-bold text-base mt-2">
-          사용자의 눈을 사로잡을 프론트엔드,
-        </p>
-        <p className="text-green-800 font-bold text-xl">카멜레온 구하기</p>
-        <p className="text-neutral-800 text-sm font-semibold mt-14">
-          소리를 듣고 사자를 찾아주세요!
-        </p>
+          <div className="w-[346px] h-[400px] grid grid-cols-2 gap-4 mt-6 bg-gradient-to-b from-[#f1dbff] to-[#d5ffd7] p-7 rounded-[20px]">
+            {shuffledOptions.map((animal, index) => (
+              <div key={animal.id} className="flex flex-col items-center">
+                <div
+                  className={`w-[130px] h-[130px] flex justify-center items-center cursor-pointer rounded-[10px] transition-all duration-200 ${
+                    selectedIndex === index
+                      ? "bg-[#BEE5C1] border-[2.5px] border-[#258D2B]"
+                      : "bg-white border-[2.5px] border-[#CAD7CB]"
+                  }`}
+                  onClick={() => playSound(animal.sound)}
+                >
+                  <img
+                    className="w-8 h-8"
+                    src={selectedIndex === index ? soundWhite : soundGreen}
+                    alt="사운드 듣기"
+                  />
+                </div>
 
-        <div className="grid grid-cols-2 gap-4 mt-6">
-          {shuffledOptions.map((animal, index) => (
-            <div key={animal.id} className="flex flex-col items-center">
-              <div
-                className={`w-[133px] h-[133px] flex justify-center items-center cursor-pointer rounded-lg transition-all duration-200 ${
-                  selectedIndex === index
-                    ? "bg-[#BEE5C1] border-[2.5px] border-[#258D2B]"
-                    : "bg-white border-[2.5px] border-[#CAD7CB]"
-                }`}
-                onClick={() => playSound(animal.sound)}
-              >
-                <img
-                  className="w-8 h-8"
-                  src={selectedIndex === index ? soundWhite : soundGreen}
-                  alt="사운드 듣기"
-                />
+                <div className="flex items-center gap-2 mt-2">
+                  <img
+                    className="w-5 h-5 cursor-pointer"
+                    src={selectedIndex === index ? selectAc : selectDe}
+                    alt="선택 버튼"
+                    onClick={() => handleSelect(index)}
+                  />
+                  <p className="text-neutral-800 text-sm font-semibold">
+                    {index + 1}번
+                  </p>
+                </div>
               </div>
+            ))}
+          </div>
 
-              <div className="flex items-center gap-2 mt-2">
-                <img
-                  className="w-5 h-5 cursor-pointer"
-                  src={selectedIndex === index ? selectAc : selectDe}
-                  alt="선택 버튼"
-                  onClick={() => handleSelect(index)}
-                />
-                <p className="text-neutral-800 text-sm font-semibold">
-                  {index + 1}번
-                </p>
-              </div>
-            </div>
-          ))}
+          <button
+            className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
+            type="button"
+          >
+            완료하기
+          </button>
         </div>
-
-        <button
-          className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-          type="button"
-        >
-          완료하기
-        </button>
       </div>
     </>
   );
