@@ -6,12 +6,18 @@ import cowSound from "../assets/mp3/cow.mp3";
 export interface AnimalSound {
   id: number;
   name: string;
-  sound: string;
+  sound: HTMLAudioElement;
 }
 
 export const animalSounds: AnimalSound[] = [
-  { id: 1, name: "Cat", sound: catSound },
-  { id: 2, name: "Lion", sound: lionSound },
-  { id: 3, name: "Tiger", sound: tigerSound },
-  { id: 4, name: "Cow", sound: cowSound },
+  { id: 1, name: "Cat", sound: new Audio(catSound) },
+  { id: 2, name: "Lion", sound: new Audio(lionSound) },
+  { id: 3, name: "Tiger", sound: new Audio(tigerSound) },
+  { id: 4, name: "Cow", sound: new Audio(cowSound) },
 ];
+
+export const preloadSounds = () => {
+  animalSounds.forEach((animal) => {
+    animal.sound.load();
+  });
+};

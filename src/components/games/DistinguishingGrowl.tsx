@@ -7,7 +7,11 @@ import selectDe from "../../assets/icon/selectDeactive.png";
 import selectAc from "../../assets/icon/selectActive.png";
 
 import StartModal from "../UI/StartModal";
-import { animalSounds, AnimalSound } from "../../constants/animalSound";
+import {
+  preloadSounds,
+  animalSounds,
+  AnimalSound,
+} from "../../constants/animalSound";
 
 function shuffleArray<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
@@ -16,19 +20,41 @@ function shuffleArray<T>(array: T[]): T[] {
 function DistinguishingGrowl() {
   const [isModalOpen, setIsModalOpen] = useState<string>("Start");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [shuffledOptions, setShuffledOptions] = useState<AnimalSound[]>([]); // AnimalSound[] 타입 지정
+  const [shuffledOptions, setShuffledOptions] = useState<AnimalSound[]>([]);
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
+    null,
+  ); // 현재 재생 중인 오디오 추적
 
   useEffect(() => {
-    setShuffledOptions(shuffleArray(animalSounds));
+    setShuffledOptions(shuffleArray(animalSounds)); // 초기 옵션 셔플
+  }, []);
+
+  useEffect(() => {
+    preloadSounds();
   }, []);
 
   const handleSelect = (index: number) => {
     setSelectedIndex(index);
+    const selectedAnimal = shuffledOptions[index];
+
+    if (selectedAnimal) {
+      console.log(`Name: ${selectedAnimal.name}, ${index + 1}`);
+    }
   };
 
-  const playSound = (soundUrl: string) => {
-    const audio = new Audio(soundUrl);
-    audio.play();
+  const playSound = (sound: HTMLAudioElement, event?: React.MouseEvent) => {
+    event?.stopPropagation(); // 선택 이벤트 방지
+
+    // 기존에 재생 중인 오디오가 있으면 정지
+    if (currentAudio && currentAudio !== sound) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    // 새로운 오디오 재생 및 상태 업데이트
+    sound.currentTime = 0;
+    sound.play();
+    setCurrentAudio(sound);
   };
 
   return (
@@ -55,41 +81,36 @@ function DistinguishingGrowl() {
         </p>
 
         <div className="grid grid-cols-2 gap-4 mt-6">
-          {shuffledOptions.map(
-            (
-              animal: AnimalSound,
-              index: number, // 👈 여기 타입 지정
-            ) => (
-              <div key={animal.id} className="flex flex-col items-center">
-                <div
-                  className={`w-[133px] h-[133px] flex justify-center items-center cursor-pointer rounded-lg transition-all duration-200 ${
-                    selectedIndex === index
-                      ? "bg-[#BEE5C1] border-[2.5px] border-[#258D2B]"
-                      : "bg-white border-[2.5px] border-[#CAD7CB]"
-                  }`}
-                  onClick={() => handleSelect(index)}
-                >
-                  <img
-                    className="w-8 h-8"
-                    src={selectedIndex === index ? soundWhite : soundGreen}
-                    alt="사운드 듣기"
-                    onClick={() => playSound(animal.sound)}
-                  />
-                </div>
-
-                <div className="flex items-center gap-2 mt-2">
-                  <img
-                    className="w-5 h-5"
-                    src={selectedIndex === index ? selectAc : selectDe}
-                    alt="선택 버튼"
-                  />
-                  <p className="text-neutral-800 text-sm font-semibold">
-                    {index + 1}번
-                  </p>
-                </div>
+          {shuffledOptions.map((animal, index) => (
+            <div key={animal.id} className="flex flex-col items-center">
+              <div
+                className={`w-[133px] h-[133px] flex justify-center items-center cursor-pointer rounded-lg transition-all duration-200 ${
+                  selectedIndex === index
+                    ? "bg-[#BEE5C1] border-[2.5px] border-[#258D2B]"
+                    : "bg-white border-[2.5px] border-[#CAD7CB]"
+                }`}
+                onClick={() => playSound(animal.sound)}
+              >
+                <img
+                  className="w-8 h-8"
+                  src={selectedIndex === index ? soundWhite : soundGreen}
+                  alt="사운드 듣기"
+                />
               </div>
-            ),
-          )}
+
+              <div className="flex items-center gap-2 mt-2">
+                <img
+                  className="w-5 h-5 cursor-pointer"
+                  src={selectedIndex === index ? selectAc : selectDe}
+                  alt="선택 버튼"
+                  onClick={() => handleSelect(index)}
+                />
+                <p className="text-neutral-800 text-sm font-semibold">
+                  {index + 1}번
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <button
