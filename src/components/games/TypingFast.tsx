@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import owlImg from "../../assets/img/other_animals/Owl.png";
 import Progressbar from "../UI/Progressbar";
 import StartModal from "../UI/StartModal";
-// import CompleteModal from "../UI/CompleteModal";
+import CompleteModal from "../UI/CompleteModal";
 
 function TypingFast() {
   const [input, setInput] = useState("");
@@ -11,6 +11,12 @@ function TypingFast() {
   // 완료 모달 -> "Complete"
   // 실패 모달 -> "Fail"
   const [isModalOpen, setIsModalOpen] = useState("Start");
+
+  useEffect(() => {
+    if (input === "멋쟁이사자처럼") {
+      setIsModalOpen("Complete");
+    }
+  }, [input]);
 
   const modalState = () => {
     switch (isModalOpen) {
@@ -22,8 +28,14 @@ function TypingFast() {
             stage={0}
           />
         );
-      // case "Complete":
-      //   return <CompleteModal />;
+      case "Complete":
+        return (
+          <CompleteModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={0}
+          />
+        );
       // case "Fail":
       //   return <FailModal />;
       default:
@@ -31,15 +43,11 @@ function TypingFast() {
     }
   };
 
-  if (input === "멋쟁이 사자처럼") {
-    setIsModalOpen("Complete");
-  }
-
   return (
     <>
       {modalState()}
-      <div className="w-full flex flex-col items-center">
-        <p className="w-[90%] flex justify-start mb-5">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/gameBackground.webp')] bg-cover items-center">
+        <p className="w-[90%] flex justify-start mb-5 mt-4">
           <img className="w-8 h-8" src={owlImg} alt="부엉이" />
         </p>
         {isModalOpen === "" && <Progressbar time={15} />}
