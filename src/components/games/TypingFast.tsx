@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import owlImg from "../../assets/img/other_animals/Owl.png";
 import Progressbar from "../UI/Progressbar";
 import StartModal from "../UI/StartModal";
@@ -11,12 +11,19 @@ function TypingFast() {
   // 완료 모달 -> "Complete"
   // 실패 모달 -> "Fail"
   const [isModalOpen, setIsModalOpen] = useState("Start");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (input === "멋쟁이사자처럼") {
       setIsModalOpen("Complete");
     }
   }, [input]);
+
+  useEffect(() => {
+    if (isModalOpen === "" && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isModalOpen]);
 
   const modalState = () => {
     switch (isModalOpen) {
@@ -60,9 +67,10 @@ function TypingFast() {
           "멋쟁이사자처럼"을 입력해주세요.
         </p>
         <input
-          className="w-[80%] h-10 rounded-[10px] mt-7 bg-white shadow-[inset_0px_0px_2px_1.5px_rgba(195,168,153,1.00)]"
+          className="w-[80%] h-10 rounded-[10px] mt-7 pl-4 bg-white shadow-[inset_0px_0px_2px_1.5px_rgba(195,168,153,1.00)]"
           type="text"
           value={input}
+          ref={inputRef}
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
