@@ -1,5 +1,81 @@
+import { useEffect, useState } from "react";
+import Step3_Button from "../UI/Step3_Button";
+import owlImg from "../../assets/img/other_animals/suricate.png";
+import { selectionData } from "../../constants/selectionData";
+import StartModal from "../UI/StartModal";
+import CompleteModal from "../UI/CompleteModal";
+import Progressbar from "../UI/Progressbar";
+
 function FindingRabbit() {
-  return <div>FindingRabbit</div>
+  const [selected, setSelected] = useState(0);
+
+  // 시작하기 모달 -> "Start"
+  // 모달 닫힘 -> "Close"
+  // 완료 모달 -> "Complete"
+  // 실패 모달 -> "Fail"
+  const [isModalOpen, setIsModalOpen] = useState("Start");
+
+  const modalState = () => {
+    switch (isModalOpen) {
+      case "Start":
+        return (
+          <StartModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={2}
+          />
+        );
+      case "Complete":
+        return (
+          <CompleteModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={2}
+          />
+        );
+      // case "Fail":
+      //   return <FailModal />;
+      default:
+        return;
+    }
+  };
+
+  useEffect(() => {
+    if (selected === 3) {
+      setIsModalOpen("Complete");
+    } else alert("오답입니다!");
+  }, [selected]);
+
+  return (
+    <>
+      {modalState()}
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step3_BG.webp')] bg-contain items-center">
+        <p className="w-[90%] flex justify-start mb-5 mt-4">
+          <img className="w-8 h-8" src={owlImg} alt="부엉이" />
+        </p>
+        {isModalOpen === "" && <Progressbar time={10} />}
+        <p className="text-slate-900 font-bold text-base mt-16">STEP 03</p>
+        <p className="text-[#852e2f] font-bold text-base mt-2">
+          트렌디하고 섬세한 디자이너,
+        </p>
+        <p className="text-[#852e2f] font-bold text-xl">미어캣 구하기</p>
+        <p className="text-neutral-800 text-sm font-semibold mt-14">
+          10초 안에 '멋쟁이사자처럼'을 찾아주세요!
+        </p>
+        <div className="w-full h-120 overflow-y-hidden flex-col justify-center items-center gap-[17px] inline-flex">
+          {selectionData.map(({ id, text }) => (
+            <Step3_Button
+              key={id}
+              id={id}
+              text={text}
+              isSelected={id === selected}
+              onSelection={setSelected}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default FindingRabbit;
