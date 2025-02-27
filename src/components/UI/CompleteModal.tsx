@@ -82,7 +82,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
           <img
             className="w-30 h-30"
             src={DUMMY_STAGE[stage].img}
-            alt="상단 아미지"
+            alt="상단 이미지"
           />
 
           <p className="text-black text-xl font-bold mt-5 flex flex-col items-start">
@@ -95,11 +95,11 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
         <div
           className={`absolute top-36 left-0 w-full p-5 ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col justify-between items-center z-0`}
         >
-          <p className="text-center text-black text-sm font-semibold leading-relaxed mt-5">
+          <div className="text-center text-black text-sm font-semibold leading-relaxed mt-5">
             {DUMMY_STAGE[stage].underText.map((line: string, index: number) => (
               <p key={index}>{line}</p>
             ))}
-          </p>
+          </div>
           <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
             to={DUMMY_STAGE[stage].link}

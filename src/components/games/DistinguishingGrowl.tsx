@@ -7,6 +7,9 @@ import selectDe from "../../assets/icon/selectDeactive.png";
 import selectAc from "../../assets/icon/selectActive.png";
 
 import StartModal from "../UI/StartModal";
+import CompleteModal from "../UI/CompleteModal";
+// import FailModal from "../UI/FailModal";
+
 import {
   preloadSounds,
   animalSounds,
@@ -18,7 +21,7 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 function DistinguishingGrowl() {
-  const [isModalOpen, setIsModalOpen] = useState<string>("Start");
+  const [isModalOpen, setIsModalOpen] = useState("Start");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [shuffledOptions, setShuffledOptions] = useState<AnimalSound[]>([]);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
@@ -32,15 +35,35 @@ function DistinguishingGrowl() {
           <StartModal
             open={isModalOpen}
             onClose={() => setIsModalOpen("")}
-            stage={0}
+            stage={3}
           />
         );
-      // case "Complete":
-      //   return <CompleteModal />;
+      case "Complete":
+        return (
+          <CompleteModal
+            open={isModalOpen}
+            onClose={() => setIsModalOpen("")}
+            stage={2}
+          />
+        );
       // case "Fail":
-      //   return <FailModal />;
+      // return <FailModal />;
       default:
         return;
+    }
+  };
+
+  const handleComplete = () => {
+    if (selectedIndex !== null) {
+      const selectedAnimal = shuffledOptions[selectedIndex];
+
+      if (selectedAnimal && selectedAnimal.id === 2) {
+        setIsModalOpen("Complete");
+      } else {
+        setIsModalOpen("Fail");
+      }
+    } else {
+      alert("선택을 해주세요!");
     }
   };
 
@@ -51,15 +74,6 @@ function DistinguishingGrowl() {
   useEffect(() => {
     preloadSounds();
   }, []);
-
-  const handleSelect = (index: number) => {
-    setSelectedIndex(index);
-    const selectedAnimal = shuffledOptions[index];
-
-    if (selectedAnimal) {
-      console.log(`Name: ${selectedAnimal.name}, ${index + 1}`);
-    }
-  };
 
   const playSound = (sound: HTMLAudioElement, event?: React.MouseEvent) => {
     event?.stopPropagation(); // 선택 이벤트 방지
@@ -117,7 +131,7 @@ function DistinguishingGrowl() {
                     className="w-5 h-5 cursor-pointer"
                     src={selectedIndex === index ? selectAc : selectDe}
                     alt="선택 버튼"
-                    onClick={() => handleSelect(index)}
+                    onClick={() => setSelectedIndex(index)}
                   />
                   <p className="text-neutral-800 text-sm font-semibold">
                     {index + 1}번
@@ -130,6 +144,7 @@ function DistinguishingGrowl() {
           <button
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
             type="button"
+            onClick={handleComplete}
           >
             완료하기
           </button>
