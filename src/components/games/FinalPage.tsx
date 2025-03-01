@@ -16,14 +16,14 @@ function FinalPage() {
         <br /> 함께 도전해볼까요?🧡
       </p>
       <a
-        className="mt-10 w-[70%] h-11 bg-[#edffee] flex justify-center items-center relative rounded-[20px]"
+        className="mt-5 w-[70%] h-11 bg-[#edffee] flex justify-center items-center relative rounded-[20px]"
         href="https://docs.google.com/forms/d/e/1FAIpQLSeNx3dRjVz4PpOWAVA8Cmdy6aHtkFqV886ZGx_ZWF2HlLRJsw/viewform"
       >
         <span className="text-base font-semibold">지원하러 가기</span>
         <img className="w-5 h-5 absolute left-[90%]" src={arrow} alt="꺽쇠" />
       </a>
       <a
-        className="mt-5 w-[70%] h-11 bg-[#edffee] flex justify-center items-center relative rounded-[20px]"
+        className="mt-3 w-[70%] h-11 bg-[#edffee] flex justify-center items-center relative rounded-[20px]"
         href="https://www.likelionssu.kr/"
       >
         <span className="text-base font-semibold">

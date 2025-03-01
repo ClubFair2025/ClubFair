@@ -12,7 +12,7 @@ function Toast({ text }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="flex flex-row justify-between  gap-3.5 items-center px-4 py-1 rounded-xl absolute top-[37%] bg-white"
+      className="flex flex-row justify-between  gap-3.5 items-center px-4 py-1 rounded-xl absolute top-[40%] bg-white"
     >
       <img className="w-5 h-5" src={warning} alt="경고 이미지" />
       <p className="text-black text-xs font-semibold">{text}</p>
