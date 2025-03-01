@@ -6,8 +6,6 @@ import selectDe from "../../assets/icon/selectDeactive.png";
 import selectAc from "../../assets/icon/selectActive.png";
 
 import StartModal from "../UI/StartModal";
-import CompleteModal from "../UI/CompleteModal";
-// import FailModal from "../UI/FailModal";
 
 import {
   preloadSounds,
@@ -45,19 +43,19 @@ function DistinguishingGrowl() {
     }
   };
 
-  const handleComplete = () => {
-    if (selectedIndex !== null) {
-      const selectedAnimal = shuffledOptions[selectedIndex];
+  // const handleComplete = () => {
+  //   if (selectedIndex !== null) {
+  //     const selectedAnimal = shuffledOptions[selectedIndex];
 
-      if (selectedAnimal && selectedAnimal.id === 2) {
-        setIsModalOpen("Complete");
-      } else {
-        setIsModalOpen("Fail");
-      }
-    } else {
-      alert("선택을 해주세요!");
-    }
-  };
+  //     if (selectedAnimal && selectedAnimal.id === 2) {
+  //       setIsModalOpen("Complete");
+  //     } else {
+  //       setIsModalOpen("Fail");
+  //     }
+  //   } else {
+  //     alert("선택을 해주세요!");
+  //   }
+  // };
 
   useEffect(() => {
     setShuffledOptions(shuffleArray(animalSounds)); // 초기 옵션 셔플
