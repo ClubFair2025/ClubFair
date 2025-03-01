@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Step3_Button from "../UI/Step3_Button";
 import owlImg from "../../assets/img/other_animals/suricate.png";
 import { selectionData } from "../../constants/selectionData";
@@ -8,6 +9,8 @@ import Progressbar from "../UI/Progressbar";
 
 function FindingRabbit() {
   const [selected, setSelected] = useState(0);
+  const navigate = useNavigate();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   // 시작하기 모달 -> "Start"
   // 모달 닫힘 -> "Close"
@@ -43,8 +46,24 @@ function FindingRabbit() {
   useEffect(() => {
     if (selected === 3) {
       setIsModalOpen("Complete");
-    } else alert("오답입니다!");
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    }
   }, [selected]);
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      navigate("/fail");
+    }, 11000);
+
+    // 컴포넌트 언마운트 시 타이머 정리
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, [navigate]);
 
   return (
     <>

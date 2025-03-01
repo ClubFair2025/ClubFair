@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import OwlImg from "../../assets/img/other_animals/Owl.png";
 import BeaverImg from "../../assets/img/other_animals/Beaver.png";
@@ -31,8 +32,8 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       upperText: ["STEP 02", "비버 구하기 성공!"],
       underText: [
         "백엔드 개발자 비버를 구해냈어요!",
-        "데이터베이스와 서버 개발은 비버에게 맡겨 주세요",
-        "웹사이트를 빛나게 해줄 디자이너를 구하러 가볼까요!",
+        "데이터베이스와 서버 개발은 비버가 맡을거에요",
+        "웹사이트를 꾸며줄 디자이너를 구하러 가볼까요?",
       ],
       bg_class: "bg-[#ead6c9]",
       link: "/finding-rabbit",
@@ -73,41 +74,48 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
   }, [open, onClose]);
 
   return createPortal(
-    <div className="bg-black fixed inset-0 opacity-40 z-50 flex justify-center items-center">
-      <dialog
-        className="w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
-        ref={dialog}
-      >
-        <div className="z-10 flex pt-10 px-2.5 justify-start">
-          <img
-            className="w-30 h-30"
-            src={DUMMY_STAGE[stage].img}
-            alt="상단 아미지"
-          />
-
-          <p className="text-black text-xl font-bold mt-5 flex flex-col items-start">
-            <span>{DUMMY_STAGE[stage].upperText[0]}</span>
-            <span className="text-[#276b29]">
-              {DUMMY_STAGE[stage].upperText[1]}
-            </span>
-          </p>
-        </div>
-        <div
-          className={`absolute top-36 left-0 w-full p-5 ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col justify-between items-center z-0`}
+    <div className="bg-black fixed inset-0 opacity-40 z-50 flex">
+      {open === "Complete" && (
+        <motion.dialog
+          initial={{ y: -300, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+          ref={dialog}
         >
-          <p className="text-center text-black text-sm font-semibold leading-relaxed mt-5">
-            {DUMMY_STAGE[stage].underText.map((line: string, index: number) => (
-              <p key={index}>{line}</p>
-            ))}
-          </p>
-          <Link
-            className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-            to={DUMMY_STAGE[stage].link}
+          <div className="z-10 flex pt-10 px-4 justify-between">
+            <img
+              className="w-30 h-30"
+              src={DUMMY_STAGE[stage].img}
+              alt="상단 아미지"
+            />
+
+            <p className="text-black text-xl font-bold mt-5 flex flex-col items-start">
+              <span>{DUMMY_STAGE[stage].upperText[0]}</span>
+              <span className="text-[#276b29]">
+                {DUMMY_STAGE[stage].upperText[1]}
+              </span>
+            </p>
+          </div>
+          <div
+            className={`absolute top-36 left-0 w-full p-5 ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col justify-between items-center z-0`}
           >
-            다음 단계
-          </Link>
-        </div>
-      </dialog>
+            <p className="text-center text-black text-sm font-semibold leading-relaxed mt-5">
+              {DUMMY_STAGE[stage].underText.map(
+                (line: string, index: number) => (
+                  <p key={index}>{line}</p>
+                ),
+              )}
+            </p>
+            <Link
+              className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
+              to={DUMMY_STAGE[stage].link}
+            >
+              다음 단계
+            </Link>
+          </div>
+        </motion.dialog>
+      )}
     </div>,
     document.getElementById("modal")!,
   );
