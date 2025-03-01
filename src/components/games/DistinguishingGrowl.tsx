@@ -86,7 +86,7 @@ function DistinguishingGrowl() {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-cover items-center overflow-auto overscroll-contain">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-cover items-center overflow-auto">
         <div className="w-full flex flex-col items-center">
           <div className="w-[90%] flex justify-start mb-5 mt-4">
             <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
