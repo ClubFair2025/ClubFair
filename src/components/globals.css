@@ -12,18 +12,16 @@
 html,
 body {
   background-color: #fff;
-  overscroll-behavior: none;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 #root {
   max-width: 480px;
   width: 100vw;
-  margin: auto; 
+  margin: auto;
   position: relative;
 }
 
