@@ -66,7 +66,6 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `감각적인 프론트엔드와`,
         `협업하기 위해 여러 소리 중`,
         `사자 울음소리를 찾아주세요!`,
-
       ],
       bg_class: "bg-[#dff5cb]",
     },
@@ -121,13 +120,13 @@ function StartModal({ open, onClose, stage }: modalProps) {
             className={`absolute top-36 left-0 w-full ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col items-center z-0`}
           >
             <div className="mt-9 flex gap-3 justify-center items-center">
-              <p className="text-center text-black text-sm font-semibold leading-relaxed">
+              <div className="text-center text-black text-sm font-semibold leading-relaxed">
                 {DUMMY_STAGE[stage].underText.map(
                   (line: string, index: number) => (
                     <p key={index}>{line}</p>
                   ),
                 )}
-              </p>
+              </div>
               <img
                 className="w-[100px] h-32"
                 src={DUMMY_STAGE[stage].underImg}
