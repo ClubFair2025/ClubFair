@@ -66,6 +66,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `감각적인 프론트엔드와`,
         `협업하기 위해 여러 소리 중`,
         `사자 울음소리를 찾아주세요!`,
+
       ],
       bg_class: "bg-[#dff5cb]",
     },
