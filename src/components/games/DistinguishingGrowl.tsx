@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import chameleonImg from "../../assets/img/other_animals/Chameleon.png";
 import soundGreen from "../../assets/icon/soundGreen.png";
 import soundWhite from "../../assets/icon/soundWhite.png";
@@ -15,6 +14,7 @@ import {
   animalSounds,
   AnimalSound,
 } from "../../constants/animalSound";
+import { Link } from "react-router-dom";
 
 function shuffleArray<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
@@ -36,14 +36,6 @@ function DistinguishingGrowl() {
             open={isModalOpen}
             onClose={() => setIsModalOpen("")}
             stage={3}
-          />
-        );
-      case "Complete":
-        return (
-          <CompleteModal
-            open={isModalOpen}
-            onClose={() => setIsModalOpen("")}
-            stage={2}
           />
         );
       // case "Fail":
@@ -94,7 +86,7 @@ function DistinguishingGrowl() {
     <>
       <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-contain items-center">
         <div className="w-full flex flex-col items-center">
-          <div className="w-[90%] flex justify-start mb-5">
+          <div className="w-[90%] flex justify-start mb-5 mt-4">
             <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
           </div>
           {modalState()}
@@ -141,13 +133,12 @@ function DistinguishingGrowl() {
             ))}
           </div>
 
-          <button
+          <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-            type="button"
-            onClick={handleComplete}
+            to={selectedIndex === 2 ? "/final" : "/fail"}
           >
             완료하기
-          </button>
+          </Link>
         </div>
       </div>
     </>
