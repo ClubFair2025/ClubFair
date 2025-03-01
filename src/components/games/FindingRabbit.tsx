@@ -58,7 +58,7 @@ function FindingRabbit() {
 
   useEffect(() => {
     timerRef.current = setTimeout(() => {
-      navigate("/fail");
+      if (isModalOpen === "") navigate("/fail");
     }, 11000);
 
     // 컴포넌트 언마운트 시 타이머 정리
@@ -67,7 +67,7 @@ function FindingRabbit() {
         clearTimeout(timerRef.current);
       }
     };
-  }, [navigate]);
+  }, [navigate, isModalOpen]);
 
   return (
     <>

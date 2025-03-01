@@ -90,7 +90,7 @@ function SavingCheetah() {
 
   useEffect(() => {
     timerRef.current = setTimeout(() => {
-      navigate("/fail");
+      if (isModalOpen === "") navigate("/fail");
     }, 11000);
 
     // 컴포넌트 언마운트 시 타이머 정리
@@ -99,7 +99,7 @@ function SavingCheetah() {
         clearTimeout(timerRef.current);
       }
     };
-  }, [navigate]);
+  }, [navigate, isModalOpen]);
 
   return (
     <>
@@ -117,7 +117,10 @@ function SavingCheetah() {
         <p className="text-neutral-800 text-sm font-semibold mt-14">
           10초 안에 숨은 비버를 찾아주세요!
         </p>
-        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-13">
+        <AnimatePresence>
+          {wrongState.length > 0 && <Toast text={wrongState} />}
+        </AnimatePresence>
+        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-7">
           <div className="grid grid-cols-4 grid-rows-4 gap-1">
             {DUMMY_CARD.map((item, index) => (
               <img
@@ -130,9 +133,6 @@ function SavingCheetah() {
             ))}
           </div>
         </div>
-        <AnimatePresence>
-          {wrongState.length > 0 && <Toast text={wrongState} />}
-        </AnimatePresence>
       </div>
     </>
   );

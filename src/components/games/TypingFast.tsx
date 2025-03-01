@@ -65,7 +65,7 @@ function TypingFast() {
   // setTimeout을 useEffect로 이동하고 ref에 저장
   useEffect(() => {
     timerRef.current = setTimeout(() => {
-      navigate("/fail");
+      if (isModalOpen === "") navigate("/fail");
     }, 16000);
 
     // 컴포넌트 언마운트 시 타이머 정리
@@ -74,7 +74,7 @@ function TypingFast() {
         clearTimeout(timerRef.current);
       }
     };
-  }, [navigate]);
+  }, [navigate, isModalOpen]);
 
   return (
     <>
