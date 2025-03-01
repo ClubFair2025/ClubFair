@@ -49,7 +49,7 @@ function DistinguishingGrowl() {
 
   // const handleComplete = () => {
   //   if (selectedIndex !== null) {
-  //     const selectedAnimal = shuffledOptions[selectedIndex];
+  // const selectedAnimal = shuffledOptions[selectedIndex]
 
   //     if (selectedAnimal && selectedAnimal.id === 2) {
   //       setIsModalOpen("Complete");
@@ -86,7 +86,7 @@ function DistinguishingGrowl() {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-cover items-center">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/step4_BG.webp')] bg-cover items-center overflow-y-scroll">
         <div className="w-full flex flex-col items-center">
           <div className="w-[90%] flex justify-start mb-5 mt-4">
             <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
@@ -136,7 +136,11 @@ function DistinguishingGrowl() {
           </div>
           <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-            to={selectedIndex === 2 ? "/final" : "/fail"}
+            to={
+              selectedIndex && shuffledOptions[selectedIndex].id === 2
+                ? "/final"
+                : "/fail"
+            }
           >
             완료하기
           </Link>
