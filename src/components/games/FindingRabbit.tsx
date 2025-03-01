@@ -18,6 +18,10 @@ function FindingRabbit() {
   // 실패 모달 -> "Fail"
   const [isModalOpen, setIsModalOpen] = useState("Start");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const modalState = () => {
     switch (isModalOpen) {
       case "Start":

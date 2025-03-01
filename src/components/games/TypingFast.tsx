@@ -18,6 +18,10 @@ function TypingFast() {
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (input === "멋쟁이사자처럼") {
       setIsModalOpen("Complete");
       // Complete 상태가 되면 타이머 취소

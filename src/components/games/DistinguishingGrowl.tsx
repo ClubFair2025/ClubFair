@@ -26,6 +26,10 @@ function DistinguishingGrowl() {
     null,
   ); // 현재 재생 중인 오디오 추적
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const modalState = () => {
     switch (isModalOpen) {
       case "Start":
@@ -130,7 +134,6 @@ function DistinguishingGrowl() {
               </div>
             ))}
           </div>
-
           <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
             to={selectedIndex === 2 ? "/final" : "/fail"}

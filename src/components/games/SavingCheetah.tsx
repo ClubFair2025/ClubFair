@@ -40,6 +40,10 @@ function SavingCheetah() {
   const [isModalOpen, setIsModalOpen] = useState("Start");
   const [wrongState, setWrongState] = useState("");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const modalState = () => {
     switch (isModalOpen) {
       case "Start":
@@ -100,7 +104,7 @@ function SavingCheetah() {
   return (
     <>
       {modalState()}
-      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/secondBackground.webp')] bg-cover items-center">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/secondBackground.webp')] bg-cover items-center overflow-y-scroll">
         <p className="w-[90%] flex justify-start mb-5 mt-4">
           <img className="w-8 h-8" src={beaverImg} alt="비버" />
         </p>
