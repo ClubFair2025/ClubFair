@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Step3_Button from "../UI/Step3_Button";
-import owlImg from "../../assets/img/other_animals/suricate.png";
+import owlImg from "../../assets/img/other_animals/Suricate.png";
 import { selectionData } from "../../constants/selectionData";
 import StartModal from "../UI/StartModal";
 import CompleteModal from "../UI/CompleteModal";
