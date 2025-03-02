@@ -13,7 +13,7 @@ const Step3_Button = ({ id, text, isSelected, onSelection }: ButtonProps) => {
       onClick={() => onSelection(id)}
     >
       <div
-        className={`text-center text-xl font-normal font-['Inter'] ${isSelected ? `text-[#ff0e0e]` : `text-[#000000]`}`}
+        className={`text-center text-xl font-normal ${isSelected ? `text-[#ff0e0e]` : `text-[#000000]`}`}
       >
         {text}
       </div>

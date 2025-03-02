@@ -20,7 +20,7 @@ function Intro_Footer() {
         웹 프로젝트의 완성을 위해 <br /> 각 분야의 팀원들을 구해야 합니다
       </p>
       <p className="font-semibold text-lg mb-16">
-        4번의 게임을 통해 팀원을 구해보세요!
+        4번의 게임을 모두 통과하여 <br /> 팀원을 구해보세요!
       </p>
       <img
         className="w-[90%] h-44 mb-8"

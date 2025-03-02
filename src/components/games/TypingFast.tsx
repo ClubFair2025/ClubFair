@@ -18,10 +18,6 @@ function TypingFast() {
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     if (input === "멋쟁이사자처럼") {
       setIsModalOpen("Complete");
       // Complete 상태가 되면 타이머 취소
@@ -35,6 +31,10 @@ function TypingFast() {
     if (isModalOpen === "" && inputRef.current) {
       inputRef.current.focus();
     }
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
   }, [isModalOpen]);
 
   const modalState = () => {
@@ -66,7 +66,7 @@ function TypingFast() {
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       if (isModalOpen === "") navigate("/fail");
-    }, 16000);
+    }, 15000);
 
     // 컴포넌트 언마운트 시 타이머 정리
     return () => {

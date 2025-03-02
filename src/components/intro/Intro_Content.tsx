@@ -12,14 +12,18 @@ function Intro_Content() {
   const firstSectionOpacity = useTransform(
     scrollYProgress,
     [0.2, 0.32, 0.65],
-    [0, 1, 0]
+    [0, 1, 0],
   );
   const secondSectionOpacity = useTransform(
     scrollYProgress,
     [0.3, 0.54, 0.9],
-    [0, 1, 0]
+    [0, 1, 0],
   );
-  const thirdSectionOpacity = useTransform(scrollYProgress, [0.6, 0.75], [0, 1]);
+  const thirdSectionOpacity = useTransform(
+    scrollYProgress,
+    [0.6, 0.75],
+    [0, 1],
+  );
 
   return (
     <main
@@ -55,7 +59,7 @@ function Intro_Content() {
           src={FirstScene}
           alt="첫번째 장면"
         />
-        <p className="text-gray-800 text-lg font-bold">
+        <p className="text-amber-700 text-lg font-bold">
           "기필코 이 웹사이트를 만들겠어!"
         </p>
       </motion.section>
@@ -72,7 +76,7 @@ function Intro_Content() {
           alt="두번째 장면"
         />
         <p className="text-amber-600 text-lg font-bold">
-          "혼자서 웹사이트를 만드는 건 너무 버거운데...."
+          "혼자서 웹사이트를 만드는 건<br /> 너무 버거운데...."
         </p>
       </motion.section>
       <motion.section

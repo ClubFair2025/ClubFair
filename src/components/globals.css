@@ -16,6 +16,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "NeoDunggeunmo";
 }
 
 #root {
@@ -26,6 +27,8 @@ body {
 }
 
 @font-face {
-  font-family: "pixelroborobo.otf";
-  src: url("../assets/fonts/pixelroborobo.otf");
+  font-family: "NeoDunggeunmo";
+  src: url("../assets/fonts/NeoDunggeunmoPro-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
 }

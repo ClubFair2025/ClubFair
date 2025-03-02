@@ -91,7 +91,7 @@ function SavingCheetah() {
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       if (isModalOpen === "") navigate("/fail");
-    }, 11000);
+    }, 10000);
 
     // 컴포넌트 언마운트 시 타이머 정리
     return () => {

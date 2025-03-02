@@ -46,7 +46,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
     {
       upperImg: designLion,
       upperText_main: ["STEP 03", "디자인 구하기"],
-      upperText_sub: ": 예리한 눈썰미를 가진 미어캣",
+      upperText_sub: ": 예리한 눈썰미의 미어캣",
       underImg: surricateWanted,
       underText: [
         `섬세한 디자이너 미어캣처럼`,
@@ -110,7 +110,9 @@ function StartModal({ open, onClose, stage }: modalProps) {
             />
             <p className="flex flex-col items-start text-black text-xl font-bold mt-6">
               <span>{DUMMY_STAGE[stage].upperText_main[0]}</span>
-              <span>{DUMMY_STAGE[stage].upperText_main[1]}</span>
+              <span className="text-lg">
+                {DUMMY_STAGE[stage].upperText_main[1]}
+              </span>
               <span className="text-xs">
                 {DUMMY_STAGE[stage].upperText_sub}
               </span>

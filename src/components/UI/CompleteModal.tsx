@@ -19,7 +19,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       upperText: ["STEP 01", "부엉이 구하기 성공!"],
       underText: [
         "기획자 부엉이를 구해냈어요!",
-        "프로젝트의 운영은 기획자에게 맡겨 주세요.",
+        "프로젝트의 운영은 기획자에게 맡기세요.",
         "그럼 강력한 시스템을 만드는",
         "백엔드 개발자를 구하러 가볼까요!",
       ],
@@ -32,8 +32,10 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       upperText: ["STEP 02", "비버 구하기 성공!"],
       underText: [
         "백엔드 개발자 비버를 구해냈어요!",
-        "데이터베이스와 서버 개발은 비버가 맡을거에요",
-        "웹사이트를 꾸며줄 디자이너를 구하러 가볼까요?",
+        "데이터베이스와 서버 개발은",
+        "비버에게 맡겨 주세요",
+        "웹사이트를 꾸며줄 디자이너를",
+        "구하러 가볼까요?",
       ],
       bg_class: "bg-[#ead6c9]",
       link: "/finding-rabbit",
@@ -43,7 +45,8 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       upperText: ["STEP 03", "미어캣 구하기 성공!"],
       underText: [
         "디자이너 미어캣을 구해냈어요!",
-        "웹사이트의 디자인은 미어캣에게 맡겨 주세요",
+        "웹사이트의 디자인은",
+        "미어캣에게 맡겨 주세요",
         "웹사이트의 화면 부분을 개발하는",
         "프론트엔드 개발자를 구하러 가볼까요!",
       ],
@@ -90,12 +93,12 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
               alt="상단 아미지"
             />
 
-            <p className="text-black text-xl font-bold mt-5 flex flex-col items-start">
-              <span>{DUMMY_STAGE[stage].upperText[0]}</span>
-              <span className="text-[#276b29]">
+            <div className="text-black text-xl font-bold mt-5 flex flex-col items-start">
+              <p>{DUMMY_STAGE[stage].upperText[0]}</p>
+              <p className="text-[#276b29] text-[17px]">
                 {DUMMY_STAGE[stage].upperText[1]}
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
           <div
             className={`absolute top-36 left-0 w-full p-5 ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col justify-between items-center z-0`}
