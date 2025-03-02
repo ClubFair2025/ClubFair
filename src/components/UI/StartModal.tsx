@@ -25,7 +25,8 @@ function StartModal({ open, onClose, stage }: modalProps) {
       underImg: owlWanted,
       underText: [
         `기획자는 꼼꼼해야 해요.`,
-        `15초 안에 "멋쟁이 사자처럼"`,
+        `15초 안에`,
+        `"멋쟁이 사자처럼"`,
         `문장을 완성해주세요!`,
       ],
       bg_class: "bg-[#fbd4c0]",
@@ -50,7 +51,8 @@ function StartModal({ open, onClose, stage }: modalProps) {
       upperText_sub: ": 예리한 눈썰미의 미어캣",
       underImg: surricateWanted,
       underText: [
-        `섬세한 디자이너 미어캣처럼`,
+        `섬세한 디자이너`,
+        `미어캣처럼`,
         `예리한 눈썰미를 발휘해`,
         `10초 안에`,
         `'멋쟁이사자처럼' 을`,
@@ -66,8 +68,10 @@ function StartModal({ open, onClose, stage }: modalProps) {
       underText: [
         `이제 마지막 단계에요.`,
         `감각적인 프론트엔드와`,
-        `협업하기 위해 여러 소리 중`,
-        `사자 울음소리를 찾아주세요!`,
+        `협업하기 위해`,
+        `여러 소리 중`,
+        `사자 울음소리를`,
+        `찾아주세요!`,
       ],
       bg_class: "bg-[#dff5cb]",
     },
