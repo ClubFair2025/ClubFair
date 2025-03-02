@@ -121,7 +121,7 @@ function DistinguishingGrowl() {
                 </div>
 
                 <div
-                  className="flex items-center gap-2 mt-2"
+                  className="flex items-center gap-2 mt-2 px-2"
                   onClick={() => setSelectedIndex(index)}
                 >
                   <img
