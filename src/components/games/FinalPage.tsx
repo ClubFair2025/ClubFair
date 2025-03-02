@@ -1,12 +1,17 @@
 import arrow from "../../assets/img/arrow.png";
+import { useEffect } from "react";
 
 function FinalPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-[url('/src/assets/img/lastBackground.webp')] bg-[length:100%_100%] flex flex-col items-center overflow-y-auto">
       <p className="mt-12 text-3xl font-semibold">축하해요!</p>
       <p className="text-xl font-semibold">모든 팀원 구하기에 성공했어요</p>
 
-      <p className="text-base font-semibold leading-7 mt-110">
+      <p className="text-base font-semibold leading-7 mt-100">
         숭멋사에서 프로젝트를 실제로 구현할 수 있어요
         <br /> 함께 도전해볼까요?🧡
       </p>
