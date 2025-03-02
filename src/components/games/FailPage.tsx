@@ -28,7 +28,7 @@ function FailPage() {
             지금 숭멋사에 지원해 사자를 구해주세요🧡
           </p>
           <a
-            className="w-[90%] h-9 mt-12 relative bg-white rounded-[20px] flex justify-center items-center text-base font-bold "
+            className="w-[90%] h-9 mt-12 relative bg-white rounded-[20px] flex justify-center items-center text-xs font-bold "
             href="https://www.likelionssu.kr/"
           >
             <span>숭멋사 공식 홈페이지 구경하기</span>
