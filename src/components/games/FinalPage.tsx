@@ -23,7 +23,7 @@ function FinalPage() {
         <img className="w-5 h-5 absolute left-[90%]" src={arrow} alt="꺽쇠" />
       </a>
       <a
-        className="mt-3 w-[90%] h-11 bg-white flex justify-center items-center relative rounded-3xl"
+        className="my-3 w-[90%] h-11 bg-white flex justify-center items-center relative rounded-3xl"
         href="https://www.likelionssu.kr/"
       >
         <span className="text-base font-semibold">
