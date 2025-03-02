@@ -110,10 +110,10 @@ function StartModal({ open, onClose, stage }: modalProps) {
             />
             <p className="flex flex-col items-start text-black text-xl font-bold mt-6">
               <span>{DUMMY_STAGE[stage].upperText_main[0]}</span>
-              <span className="text-lg">
+              <span className="text-sm">
                 {DUMMY_STAGE[stage].upperText_main[1]}
               </span>
-              <span className="text-xs">
+              <span className="text-[10px]">
                 {DUMMY_STAGE[stage].upperText_sub}
               </span>
             </p>

@@ -19,7 +19,8 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       upperText: ["STEP 01", "부엉이 구하기 성공!"],
       underText: [
         "기획자 부엉이를 구해냈어요!",
-        "프로젝트의 운영은 기획자에게 맡기세요.",
+        "프로젝트의 운영과 관리는",
+        "기획자에게 맡기세요.",
         "그럼 강력한 시스템을 만드는",
         "백엔드 개발자를 구하러 가볼까요!",
       ],
@@ -95,7 +96,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
 
             <div className="text-black text-xl font-bold mt-5 flex flex-col items-start">
               <p>{DUMMY_STAGE[stage].upperText[0]}</p>
-              <p className="text-[#276b29] text-[17px]">
+              <p className="text-[#276b29] text-sm">
                 {DUMMY_STAGE[stage].upperText[1]}
               </p>
             </div>
