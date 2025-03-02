@@ -96,7 +96,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
 
             <div className="text-black text-xl font-bold mt-5 flex flex-col items-start">
               <p>{DUMMY_STAGE[stage].upperText[0]}</p>
-              <p className="text-[#276b29] text-sm">
+              <p className="text-[#276b29] text-base">
                 {DUMMY_STAGE[stage].upperText[1]}
               </p>
             </div>
