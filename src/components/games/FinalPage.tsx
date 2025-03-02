@@ -2,7 +2,7 @@ import arrow from "../../assets/img/arrow.png";
 
 function FinalPage() {
   return (
-    <div className="w-full h-screen bg-[url('/src/assets/img/lastBackground.webp')] bg-cover flex flex-col items-center overflow-y-auto">
+    <div className="w-full h-screen bg-[url('/src/assets/img/lastBackground.webp')] bg-[length:100%_100%] flex flex-col items-center overflow-y-auto">
       <p className="mt-12 text-3xl font-semibold">축하해요!</p>
       <p className="text-xl font-semibold">모든 팀원 구하기에 성공했어요</p>
 
