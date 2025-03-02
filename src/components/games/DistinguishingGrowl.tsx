@@ -120,12 +120,14 @@ function DistinguishingGrowl() {
                   />
                 </div>
 
-                <div className="flex items-center gap-2 mt-2">
+                <div
+                  className="flex items-center gap-2 mt-2"
+                  onClick={() => setSelectedIndex(index)}
+                >
                   <img
                     className="w-5 h-5 cursor-pointer"
                     src={selectedIndex === index ? selectAc : selectDe}
                     alt="선택 버튼"
-                    onClick={() => setSelectedIndex(index)}
                   />
                   <p className="text-neutral-800 text-sm font-semibold">
                     {index + 1}번
