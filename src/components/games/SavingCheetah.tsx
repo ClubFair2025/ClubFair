@@ -120,7 +120,7 @@ function SavingCheetah() {
         <AnimatePresence>
           {wrongState.length > 0 && <Toast text={wrongState} />}
         </AnimatePresence>
-        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-13">
+        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-7">
           <div className="grid grid-cols-4 grid-rows-4 gap-1">
             {DUMMY_CARD.map((item, index) => (
               <img
