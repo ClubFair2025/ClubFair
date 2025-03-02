@@ -123,7 +123,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
           <div
             className={`absolute top-36 left-0 w-full ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col items-center z-0`}
           >
-            <div className="mt-9 flex gap-3 justify-center items-center">
+            <div className="mt-9 px-2 flex justify-between items-center">
               <div className="text-center text-black text-sm font-semibold leading-relaxed">
                 {DUMMY_STAGE[stage].underText.map(
                   (line: string, index: number) => (
