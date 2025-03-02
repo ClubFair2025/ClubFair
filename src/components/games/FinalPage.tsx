@@ -11,7 +11,7 @@ function FinalPage() {
       <p className="mt-12 text-3xl font-semibold">축하해요!</p>
       <p className="text-xl font-semibold">모든 팀원 구하기에 성공했어요</p>
 
-      <p className="text-base font-semibold leading-7 mt-105">
+      <p className="text-base font-semibold leading-7 mt-90">
         숭멋사에서 프로젝트를 실제로 구현할 수 있어요
         <br /> 함께 도전해볼까요?🧡
       </p>
