@@ -104,7 +104,7 @@ function SavingCheetah() {
   return (
     <>
       {modalState()}
-      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/secondBackground.webp')] bg-cover items-center overflow-y-scroll relative">
+      <div className="w-full h-screen flex flex-col bg-[url('/src/assets/img/secondBackground.webp')] bg-cover items-center overflow-y-auto relative">
         <p className="w-[90%] flex justify-start mb-5 mt-4">
           <img className="w-8 h-8" src={beaverImg} alt="비버" />
         </p>
@@ -120,7 +120,7 @@ function SavingCheetah() {
         <AnimatePresence>
           {wrongState.length > 0 && <Toast text={wrongState} />}
         </AnimatePresence>
-        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-13">
+        <div className="w-90 h-90 flex justify-center items-center bg-white rounded-[20px] mt-13 mb-4">
           <div className="grid grid-cols-4 grid-rows-4 gap-1">
             {DUMMY_CARD.map((item, index) => (
               <img
