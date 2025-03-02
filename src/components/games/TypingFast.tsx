@@ -93,7 +93,7 @@ function TypingFast() {
           15초 안에 "멋쟁이사자처럼"을 입력해주세요.
         </p>
         <input
-          className="w-[80%] h-10 rounded-[10px] mt-7 pl-4 bg-white shadow-[inset_0px_0px_2px_1.5px_rgba(195,168,153,1.00)]"
+          className="w-[80%] h-10 rounded-[10px] mt-7 pl-4 bg-white shadow-[inset_0px_0px_2px_1.5px_rgba(195,168,153,1.00)] font-[Inter]"
           type="text"
           value={input}
           ref={inputRef}
