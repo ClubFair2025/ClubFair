@@ -66,7 +66,7 @@ function TypingFast() {
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       if (isModalOpen === "") navigate("/fail");
-    }, 15000);
+    }, 10000);
 
     // 컴포넌트 언마운트 시 타이머 정리
     return () => {
@@ -83,7 +83,7 @@ function TypingFast() {
         <p className="w-[90%] flex justify-start mb-5 mt-4">
           <img className="w-8 h-8" src={owlImg} alt="부엉이" />
         </p>
-        {isModalOpen === "" && <Progressbar time={15} />}
+        {isModalOpen === "" && <Progressbar time={10} />}
         <p className="text-slate-900 font-bold text-base mt-16">STEP 01</p>
         <p className="text-green-800 font-bold text-base mt-2">
           넓은 시야를 지닌 기획자,

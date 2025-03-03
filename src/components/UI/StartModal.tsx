@@ -25,7 +25,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
       underImg: owlWanted,
       underText: [
         `기획자는 꼼꼼해야 해요.`,
-        `15초 안에`,
+        `10초 안에`,
         `"멋쟁이 사자처럼"`,
         `문장을 완성해주세요!`,
       ],
@@ -40,7 +40,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
         `묵묵히 시스템을`,
         `구축하는 비버가`,
         `사자 사이에 숨어있어요.`,
-        `15초 안에`,
+        `10초 안에`,
         `비버를 찾아주세요!`,
       ],
       bg_class: "bg-[#ead6c9]",
