@@ -90,7 +90,7 @@ function TypingFast() {
         </p>
         <p className="text-green-800 font-bold text-xl">부엉이 구하기</p>
         <p className="text-neutral-800 text-sm font-semibold mt-14">
-          15초 안에 "멋쟁이사자처럼"을 입력해주세요.
+          10초 안에 "멋쟁이사자처럼"을 입력해주세요.
         </p>
         <input
           className="w-[80%] h-10 rounded-[10px] mt-7 pl-4 bg-white shadow-[inset_0px_0px_2px_1.5px_rgba(195,168,153,1.00)] font-[Inter]"

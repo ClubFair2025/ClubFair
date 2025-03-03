@@ -9,6 +9,7 @@ import designLion from "../../assets/img/lion/designLion.png";
 import surricateWanted from "../../assets/img/other_animals/surricateWanted.png";
 import frontendLion from "../../assets/img/lion/frontendLion.png";
 import chameleonWanted from "../../assets/img/other_animals/chameleonWanted.png";
+import TypedText from "./TypedText";
 
 interface modalProps {
   open: string;
@@ -127,16 +128,12 @@ function StartModal({ open, onClose, stage }: modalProps) {
           <div
             className={`absolute top-36 left-0 w-full ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col items-center z-0`}
           >
-            <div className="mt-9 px-2 flex justify-between items-center">
-              <div className="text-center text-black text-sm font-semibold leading-relaxed">
-                {DUMMY_STAGE[stage].underText.map(
-                  (line: string, index: number) => (
-                    <p key={index}>{line}</p>
-                  ),
-                )}
+            <div className="mt-9 px-2 w-full h-full relative">
+              <div className="w-50 text-black text-sm font-semibold leading-relaxed absoulte left-0">
+                <TypedText textList={DUMMY_STAGE[stage].underText} />
               </div>
               <img
-                className="w-[100px] h-32"
+                className="w-[100px] h-32 absolute right-4 top-0"
                 src={DUMMY_STAGE[stage].underImg}
                 alt="수배지 이미지"
               />

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import OwlImg from "../../assets/img/other_animals/Owl.png";
 import BeaverImg from "../../assets/img/other_animals/Beaver.png";
 import SurricateImg from "../../assets/img/other_animals/Suricate.png";
-
+import TypedText from "./TypedText";
 interface modalProps {
   open: string;
   onClose: () => void;
@@ -34,7 +34,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       underText: [
         "백엔드 개발자 비버를 구해냈어요!",
         "데이터베이스와 서버 개발은",
-        "비버에게 맡겨 주세요",
+        "비버에게 맡겨 주세요.",
         "웹사이트를 꾸며줄 디자이너를",
         "구하러 가볼까요?",
       ],
@@ -47,7 +47,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
       underText: [
         "디자이너 미어캣을 구해냈어요!",
         "웹사이트의 디자인은",
-        "미어캣에게 맡겨 주세요",
+        "미어캣에게 맡겨 주세요.",
         "웹사이트의 화면 부분을 개발하는",
         "프론트엔드 개발자를 구하러 가볼까요!",
       ],
@@ -105,11 +105,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
             className={`absolute top-36 left-0 w-full p-5 ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col justify-between items-center z-0`}
           >
             <div className="text-center text-black text-sm font-semibold leading-relaxed mt-5">
-              {DUMMY_STAGE[stage].underText.map(
-                (line: string, index: number) => (
-                  <p key={index}>{line}</p>
-                ),
-              )}
+              <TypedText textList={DUMMY_STAGE[stage].underText} />
             </div>
             <Link
               className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
