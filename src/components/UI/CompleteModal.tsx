@@ -108,7 +108,7 @@ function CompleteModal({ open, onClose, stage }: modalProps) {
               <TypedText textList={DUMMY_STAGE[stage].underText} />
             </div>
             <Link
-              className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
+              className="w-[90%] h-9 mt-8 mb-5 pt-3 pb-3 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
               to={DUMMY_STAGE[stage].link}
             >
               다음 단계

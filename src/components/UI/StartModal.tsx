@@ -139,11 +139,11 @@ function StartModal({ open, onClose, stage }: modalProps) {
               />
             </div>
             <button
-              className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
+              className="w-[90%] h-9 mt-8 mb-5 pt-3 pb-3 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
               type="button"
               onClick={onClose}
             >
-              시작 하기
+              시작하기
             </button>
           </div>
         </motion.dialog>
