@@ -104,7 +104,11 @@ function DistinguishingGrowl() {
 
           <div className="w-[346px] h-[400px] grid grid-cols-2 gap-4 mt-6 bg-gradient-to-b from-[#f1dbff] to-[#d5ffd7] p-7 rounded-[20px]">
             {shuffledOptions.map((animal, index) => (
-              <div key={animal.id} className="flex flex-col items-center">
+              <div
+                key={animal.id}
+                className="flex flex-col items-center"
+                onClick={() => setSelectedIndex(index)}
+              >
                 <div
                   className={`w-[130px] h-[130px] flex justify-center items-center cursor-pointer rounded-[10px] transition-all duration-200 ${
                     selectedIndex === index
