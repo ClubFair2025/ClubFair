@@ -6,6 +6,7 @@ import selectDe from "../../assets/icon/selectDeactive.png";
 import selectAc from "../../assets/icon/selectActive.png";
 
 import StartModal from "../UI/StartModal";
+import Toast from "../UI/Toast";
 
 import {
   preloadSounds,
@@ -20,46 +21,16 @@ function shuffleArray<T>(array: T[]): T[] {
 
 function DistinguishingGrowl() {
   const [isModalOpen, setIsModalOpen] = useState("Start");
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedAnimalId, setSelectedAnimalId] = useState<number | null>(null);
   const [shuffledOptions, setShuffledOptions] = useState<AnimalSound[]>([]);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
     null,
   ); // 현재 재생 중인 오디오 추적
+  const [wrongState, setWrongState] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const modalState = () => {
-    switch (isModalOpen) {
-      case "Start":
-        return (
-          <StartModal
-            open={isModalOpen}
-            onClose={() => setIsModalOpen("")}
-            stage={3}
-          />
-        );
-      // case "Fail":
-      // return <FailModal />;
-      default:
-        return;
-    }
-  };
-
-  // const handleComplete = () => {
-  //   if (selectedIndex !== null) {
-  // const selectedAnimal = shuffledOptions[selectedIndex]
-
-  //     if (selectedAnimal && selectedAnimal.id === 2) {
-  //       setIsModalOpen("Complete");
-  //     } else {
-  //       setIsModalOpen("Fail");
-  //     }
-  //   } else {
-  //     alert("선택을 해주세요!");
-  //   }
-  // };
 
   useEffect(() => {
     setShuffledOptions(shuffleArray(animalSounds)); // 초기 옵션 셔플
@@ -69,19 +40,27 @@ function DistinguishingGrowl() {
     preloadSounds();
   }, []);
 
-  const playSound = (sound: HTMLAudioElement, event?: React.MouseEvent) => {
+  const playSound = (animal: AnimalSound, event?: React.MouseEvent) => {
     event?.stopPropagation(); // 선택 이벤트 방지
 
-    // 기존에 재생 중인 오디오가 있으면 정지
-    if (currentAudio && currentAudio !== sound) {
+    if (currentAudio && currentAudio !== animal.sound) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
 
-    // 새로운 오디오 재생 및 상태 업데이트
-    sound.currentTime = 0;
-    sound.play();
-    setCurrentAudio(sound);
+    animal.sound.currentTime = 0;
+    animal.sound.play();
+    setCurrentAudio(animal.sound);
+
+    setSelectedAnimalId(animal.id);
+  };
+
+  const handleComplete = (event: React.MouseEvent) => {
+    if (selectedAnimalId === null) {
+      event.preventDefault();
+      setWrongState(true);
+      setTimeout(() => setWrongState(false), 2000);
+    }
   };
 
   return (
@@ -91,7 +70,14 @@ function DistinguishingGrowl() {
           <div className="w-[90%] flex justify-start mb-5 mt-4">
             <img className="w-8 h-8" src={chameleonImg} alt="카멜레온" />
           </div>
-          {modalState()}
+
+          {isModalOpen === "Start" && (
+            <StartModal
+              open={isModalOpen}
+              onClose={() => setIsModalOpen("")}
+              stage={3}
+            />
+          )}
 
           <p className="text-slate-900 font-bold text-base mt-16">STEP 04</p>
           <p className="text-[#44652B] font-bold text-base mt-2">
@@ -101,33 +87,37 @@ function DistinguishingGrowl() {
           <p className="text-neutral-800 text-sm font-semibold mt-14">
             소리를 듣고 사자를 찾아주세요!
           </p>
-
+          {wrongState && <Toast text="먼저 선택해주세요!" />}
           <div className="w-[346px] h-[400px] grid grid-cols-2 gap-4 mt-6 bg-gradient-to-b from-[#f1dbff] to-[#d5ffd7] p-7 rounded-[20px]">
             {shuffledOptions.map((animal, index) => (
-              <div key={animal.id} className="flex flex-col items-center">
+              <div
+                key={animal.id}
+                className="flex flex-col items-center"
+                onClick={() => setSelectedAnimalId(animal.id)}
+              >
                 <div
                   className={`w-[130px] h-[130px] flex justify-center items-center cursor-pointer rounded-[10px] transition-all duration-200 ${
-                    selectedIndex === index
+                    selectedAnimalId === animal.id
                       ? "bg-[#BEE5C1] border-[2.5px] border-[#258D2B]"
                       : "bg-white border-[2.5px] border-[#CAD7CB]"
                   }`}
-                  onClick={() => playSound(animal.sound)}
+                  onClick={(e) => playSound(animal, e)}
                 >
                   <img
                     className="w-8 h-8"
-                    src={selectedIndex === index ? soundWhite : soundGreen}
+                    src={
+                      selectedAnimalId === animal.id ? soundWhite : soundGreen
+                    }
                     alt="사운드 듣기"
                   />
                 </div>
 
-                <div
-                  className="flex items-center gap-2 mt-2 px-2"
-                  onClick={() => setSelectedIndex(index)}
-                >
+                <div className="flex items-center gap-2 mt-2 px-2">
                   <img
                     className="w-5 h-5 cursor-pointer"
-                    src={selectedIndex === index ? selectAc : selectDe}
+                    src={selectedAnimalId === animal.id ? selectAc : selectDe}
                     alt="선택 버튼"
+                    onClick={() => setSelectedAnimalId(animal.id)}
                   />
                   <p className="text-neutral-800 text-sm font-semibold">
                     {index + 1}번
@@ -136,13 +126,11 @@ function DistinguishingGrowl() {
               </div>
             ))}
           </div>
+
           <Link
             className="w-[90%] h-9 mt-8 mb-5 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
-            to={
-              selectedIndex && shuffledOptions[selectedIndex].id === 2
-                ? "/final"
-                : "/fail"
-            }
+            to={selectedAnimalId === 2 ? "/final" : "/fail"}
+            onClick={handleComplete}
           >
             완료하기
           </Link>

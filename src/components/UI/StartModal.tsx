@@ -54,7 +54,6 @@ function StartModal({ open, onClose, stage }: modalProps) {
       underText: [
         `섬세한 디자이너`,
         `미어캣처럼`,
-        `예리한 눈썰미를 발휘해`,
         `10초 안에`,
         `'멋쟁이사자처럼' 을`,
         `찾아주세요!`,
@@ -68,8 +67,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
       underImg: chameleonWanted,
       underText: [
         `이제 마지막 단계에요.`,
-        `감각적인 프론트엔드와`,
-        `협업하기 위해`,
+        `감각적인 프론트엔드처럼`,
         `여러 소리 중`,
         `사자 울음소리를`,
         `찾아주세요!`,
@@ -106,7 +104,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
           initial={{ y: -300, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+          className="max-w-[320px] w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
           ref={dialog}
         >
           <div className="z-10 flex pt-8 px-2.5 gap-5 justify-start">
@@ -128,8 +126,8 @@ function StartModal({ open, onClose, stage }: modalProps) {
           <div
             className={`absolute top-36 left-0 w-full ${DUMMY_STAGE[stage].bg_class} h-64 rounded-4xl flex flex-col items-center z-0`}
           >
-            <div className="mt-9 px-2 w-full h-full relative">
-              <div className="w-50 text-black text-sm font-semibold leading-relaxed absoulte left-0">
+            <div className="mt-9 px-2 w-full h-[60%] relative">
+              <div className="w-50 text-black text-sm font-semibold leading-relaxed absoulte left-0 pt-3">
                 <TypedText textList={DUMMY_STAGE[stage].underText} />
               </div>
               <img
@@ -140,6 +138,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
             </div>
             <button
               className="w-[90%] h-9 mt-8 mb-5 pt-3 pb-3 flex justify-center items-center bg-white rounded-3xl text-black text-base font-semibold"
+
               type="button"
               onClick={onClose}
             >
