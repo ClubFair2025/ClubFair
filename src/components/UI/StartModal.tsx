@@ -104,7 +104,7 @@ function StartModal({ open, onClose, stage }: modalProps) {
           initial={{ y: -300, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+          className="max-w-[320px] w-[80%] h-100 bg-white rounded-4xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
           ref={dialog}
         >
           <div className="z-10 flex pt-8 px-2.5 gap-5 justify-start">
